@@ -2,6 +2,7 @@ package com.spring.testing.model;
 
 import jakarta.persistence.*;
 
+    //Create Model Student
 @Entity
 @Table(name = "student")
 public class Student {
