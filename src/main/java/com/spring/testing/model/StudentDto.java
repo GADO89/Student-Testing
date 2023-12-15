@@ -17,9 +17,25 @@ private String phone;
 
 private boolean active;
 
+    public StudentDto() {
+    }
 
+    public StudentDto(long id, String name, int age, String phone, boolean active) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.phone = phone;
+        this.active = active;
+    }
 
-public long getId() {
+    public StudentDto(String name, int age, String phone, boolean active) {
+        this.name = name;
+        this.age = age;
+        this.phone = phone;
+        this.active = active;
+    }
+
+    public long getId() {
     return id;
 }
 

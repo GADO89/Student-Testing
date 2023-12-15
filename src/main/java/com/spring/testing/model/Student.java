@@ -18,6 +18,9 @@ public class Student {
     private String phone;
 
     private boolean active;
+        public Student() {
+
+        }
 
     public Student(long id, String name, int age, String phone, boolean active) {
         this.id = id;

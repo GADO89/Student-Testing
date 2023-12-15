@@ -16,24 +16,25 @@ public class StudentController {
     private StudentService studentService;
 
     @PostMapping("/create")
-    public ResponseEntity<StudentDto> createStudent(Student student){
+    public ResponseEntity<StudentDto> createStudent(@RequestBody Student student){
     return     ResponseEntity.ok(studentService.createStudent(student));
     }
     @GetMapping("/getAll")
     public ResponseEntity<List<StudentDto>>  getAllStudent(){
         return    ResponseEntity.ok(studentService.getAllStudent());
     }
-    @DeleteMapping("/delete")
-    public ResponseEntity  deleteStudent(Long id){
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity  deleteStudent(@PathVariable("id")  Long id){
         studentService.deleteStudent(id);
        return ResponseEntity.ok().build();
     }
-    @PostMapping("/edit")
-    public ResponseEntity<StudentDto> editStudent(Student student){
+    @PutMapping("/edit")
+    public ResponseEntity<StudentDto> editStudent(@RequestBody Student student){
         return    ResponseEntity.ok(studentService.editStudent(student));
     }
-    @GetMapping("/get")
-    public ResponseEntity<StudentDto> getStudentById(Long id){
+    @GetMapping("/get/{id}")
+    //@RequestMapping(method = RequestMethod.GET, value = "/get/{id}")
+    public ResponseEntity<StudentDto> getStudentById(@PathVariable("id")  Long id){
         return      ResponseEntity.ok(studentService.getStudentById(id));
     }
 
