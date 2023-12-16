@@ -73,9 +73,14 @@ public class StudentServiceImpltTest {
         Assertions.assertEquals(20,studentDto.getAge());
         Assertions.assertEquals("01125589989",studentDto.getPhone());
         Assertions.assertTrue(studentDto.isActive());
-
-
     }
+    @Test
+    public void deleteStudentById_thenValidate(){
+        studentService =new StudentServiceImpl(studentRepo);
+        studentService.deleteStudent(1L);
+        Mockito.verify(studentRepo,Mockito.times(1)).deleteById(1L);
+    }
+
 
 
     private Student createStudent(String name, int age,String phone,boolean active){
