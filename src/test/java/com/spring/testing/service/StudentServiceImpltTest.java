@@ -21,9 +21,9 @@ public class StudentServiceImpltTest {
     private StudentService studentService;
     @Mock
     private StudentRepo studentRepo;
-
+//throws Exception with createStudent
     @Test
-    public void createStudent_thenValidate(){
+    public void createStudent_thenValidate() throws Exception {
         studentService =new StudentServiceImpl(studentRepo);
         Student student=createStudent("gado",20,"01125589989",true);
         Mockito.when(studentRepo.save(student)).thenReturn(createStudentWithID(1L, "gado",20,"01125589989",true));
