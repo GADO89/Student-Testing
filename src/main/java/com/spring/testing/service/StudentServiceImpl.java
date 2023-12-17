@@ -21,8 +21,11 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public StudentDto createStudent(Student student) throws Exception{
-        if (student.getId()>0 || student.getId()<0) {
-            throw new RuntimeException("You musst not send id");
+        if (student.getId()>0) {
+            throw new IllegalArgumentException("You musst not send id");
+        }
+        if (student.getId()<0){
+            throw new RuntimeException(" Invalid id (id<0) and You musst not send id");
         }
         return studentDto(studentRepo.save(student));
     }
