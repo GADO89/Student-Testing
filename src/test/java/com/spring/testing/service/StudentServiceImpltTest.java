@@ -35,6 +35,17 @@ public class StudentServiceImpltTest {
         Assertions.assertEquals("01125589989",studentDto.getPhone());
         Assertions.assertTrue(studentDto.isActive());
     }
+
+    @Test
+    public void createStudent_thenThrowException() throws Exception {
+        studentService =new StudentServiceImpl(studentRepo);
+       // Student student=createStudent("gado",20,"01125589989",true);
+        Student student =createStudentWithID(1L, "gado",20,"01125589989",true);
+        Exception exception=Assertions.assertThrows(Exception.class,
+                ()->        studentService.createStudent(student));
+        Assertions.assertEquals("You musst not send id", exception.getMessage());
+
+    }
     @Test
     public void getAllStudent_thenValidate(){
         studentService=new  StudentServiceImpl(studentRepo);
@@ -47,6 +58,8 @@ public class StudentServiceImpltTest {
         Assertions.assertEquals(23,studentDto.getAge());
         Assertions.assertEquals("phone3",studentDto.getPhone());
         Assertions.assertFalse(studentDto.isActive());
+
+
 
     }
     @Test
